@@ -1,6 +1,5 @@
 from tkinter import *
 import webbrowser
-import tkinter.ttk as ttk
 from tkinter.filedialog import askopenfile
 from tkinter import filedialog
 import os
