@@ -94,4 +94,4 @@ while True:
 # cleanup the camera and close any open windows
 vs.stop() if args.get("video", None) is None else vs.release()
 cv2.destroyAllWindows()
-#to initiate code type in terminal: 'python motion_detector.py'
+#to initiate code type in terminal: 'python3 motion_detector.py'
