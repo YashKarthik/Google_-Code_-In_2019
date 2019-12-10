@@ -6,8 +6,8 @@ import argparse
 import imutils
 import cv2
 #import GCI_19.Task_3.pyimagesearch
-from pyimagesearch.shapedetector import ShapeDetector
-from pyimagesearch.colorlabeler import ColorLabeler
+from ccc.shapedetector import ShapeDetector
+from ccc.colorlabeler import ColorLabeler
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
