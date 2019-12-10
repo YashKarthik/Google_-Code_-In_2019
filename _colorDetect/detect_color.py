@@ -63,3 +63,5 @@ for c in cnts:
 	# show the output image
 	cv2.imshow("Image", image)
 	cv2.waitKey(0)
+	#To run: type in terminal-
+	#"python3 detect_color.py --image example_shapes.png"
