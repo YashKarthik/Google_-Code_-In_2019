@@ -5,7 +5,7 @@ Includes:
 3)example_shapes.png _the image I used as the sample for my programs.
 4)mask.py . _File to filter out all colors except the one specified
 5)ccc:
--colorlabeler.py
--shapedetector.pynk
+-colorlabeler.py _used as a module
+-shapedetector.pynk _used as a module
           
            
