@@ -6,6 +6,6 @@ Includes:
 4)mask.py . _File to filter out all colors except the one specified
 5)ccc:
 -colorlabeler.py
--shapedetector.py
+-shapedetector.pynk
           
            
