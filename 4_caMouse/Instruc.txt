@@ -1,6 +1,0 @@
-Basic instructions for the use of caM_ouse.py
-
-Launch the program.
-Use 2 finger taped/carrying neon green objects, those neon green object are what the program looks for.
-Keep you fingers apart for no click, bring them closer for clicking.
-
