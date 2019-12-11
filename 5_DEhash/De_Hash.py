@@ -42,66 +42,57 @@ def hash_sha512():
 
 #For cracking through md5
 def crack_md5():
-    for line in filename:
-        m = hashlib.md5()
-        #cut off '\n' character
-        m.update(line[:-1])
-        guess = m.hexdigest()
-        if guess == solution:
-            print(line)
-            break
+    for guess in filename:
+        hashedGuess = hashlib.md5(bytes(guess, 'utf-8')).hexdigest()
+        if hashedGuess == solution:
+            print("The password is ", str(guess))
+        elif hashedGuess != solution:
+            print("Password guess ",str(guess)," does not match, trying next...")
 
 #For cracking throught sha1
 def crack_sha1():
-    for line in filename:
-        m = hashlib.sha1()
-        #cut off the '\n' character
-        m.update(line[:-1])
-        guess = m.hexdigest()
-        if guess == solution:
-            print(line)
-            break
+    for guess in filename:
+        hashedGuess = hashlib.sha1(bytes(guess, 'utf-8')).hexdigest()
+        if hashedGuess == solution:
+            print("The password is ", str(guess))
+        elif hashedGuess != solution:
+            print("Password guess ",str(guess)," does not match, trying next...")
 
 #For cracking through sha224
 def crack_sha224():
-    for line in filename:
-        m = hashlib.sha224()
-        #cut off the '\n' character
-        m.update(line[:-1])
-        guess = m.hexdigest()
-        if guess == solution:
-            print(line)
-            break
+    for guess in filename:
+        hashedGuess = hashlib.sha224(bytes(guess, 'utf-8')).hexdigest()
+        if hashedGuess == solution:
+            print("The password is ", str(guess))
+        elif hashedGuess != solution:
+            print("Password guess ",str(guess)," does not match, trying next...")
 
 #For cracking through sha256
 def crack_sha256():
-    for line in filename:
-        m = hashlib.sha256()
-        m.update(line[:-1])
-        guess = m.hexdigest()
-        if guess == solution:
-            print(line)
-            break
+    for guess in filename:
+        hashedGuess = hashlib.sha256(bytes(guess, 'utf-8')).hexdigest()
+        if hashedGuess == solution:
+            print("The password is ", str(guess))
+        elif hashedGuess != solution:
+            print("Password guess ",str(guess)," does not match, trying next...")
     
 #For cracking through sha384
 def crack_sha384():
-    for line in filename:
-        m = hashlib.sha384()
-        m.update(line[:-1])
-        guess = m.hexdigest()
-        if guess == solution:
-            print(line)
-            break
+    for guess in filename:
+        hashedGuess = hashlib.sha384(bytes(guess, 'utf-8')).hexdigest()
+        if hashedGuess == solution:
+            print("The password is ", str(guess))
+        elif hashedGuess != solution:
+            print("Password guess ",str(guess)," does not match, trying next...")
 
 #For cracking through sha512
 def crack_sha512():
-    for line in filename:
-        m = hashlib.sha512()
-        m.update(line[:-1])
-        guess = m.hexdigest()
-        if guess == solution:
-            print(line)
-            break
+    for guess in filename:
+        hashedGuess = hashlib.sha512(bytes(guess, 'utf-8')).hexdigest()
+        if hashedGuess == solution:
+            print("The password is ", str(guess))
+        elif hashedGuess != solution:
+            print("Password guess ",str(guess)," does not match, trying next...")
 
 #Logic to either hash or crack
 choice = str(input("Enter whether you wanna hash or decrypt"))
@@ -122,6 +113,8 @@ if choice == 'hash':
         hash_sha512()
 elif choice == 'decrypt':
     filename = open("passW.txt", "r")
+    with open('passW.txt') as f:
+        filename = [line.rstrip('\n') for line in f]
     solution = input("Enter the solution of the hash you are looking for")             #solution to be decrypted
     choice_decrypt = str(input("Enter the hashing algorithm used to obtain the solution"))
     if choice_decrypt == 'md5':
