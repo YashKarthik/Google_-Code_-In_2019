@@ -1,7 +1,7 @@
 import zipfile 
  
 filename = 'uncracked.zip' 
-dictionary = 'c.txt' 
+dictionary = 'PassW.txt.txt' 
  
 password = None 
 file_to_open = zipfile.ZipFile(filename) 
