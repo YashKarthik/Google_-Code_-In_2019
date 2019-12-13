@@ -12,4 +12,6 @@ Step_2: Type in the terminal command for running the script.
 Step_3: Save it as application.
 Step_4: Go to system preferences and in user logins set login items as the automater file in applications folder
 
-Done!
+
+SCRIPT SPECIFIC FOR MAC OS ONLY!
+
