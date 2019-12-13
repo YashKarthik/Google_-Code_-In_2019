@@ -1,6 +1,7 @@
 import nltk
 import re
 import textdistance
+from operator import itemgetter
 
 
 def main():
@@ -18,19 +19,32 @@ def main():
     print("List of the words in file provided: ", lisL)
     print("The list of words in the dictionary:", dicL)
 
-    i = 0
-    while i<20:
+    
+    m = 0                       #For string_1
+    i = 0                    #For string_2
+    l = len(lisL)
 
-        if (textdistance.levenshtein(string_1, string_2)) < 3 :
-            lisL.insert(string_2)
-            lisL.pop(string_1)
+    while m != l:
+        while i!= 20:
+            string_1 = itemgetter(m)(lisL)
+            string_2 = itemgetter(i)(dicL)
+            if (textdistance.levenshtein(string_1, string_2)) < 3 :
+                lisL.remove(string_1)
+                lisL.insert(m, string_2)
+            else:
+                pass
             i += 1
 
-    str1 = " " 
     
-    # return string   
-    print(str1.join(lisL)) 
+    # return string  
+    str1 = '' 
+    checkED = (str1.join(lisL)) 
+    print('The corrected string is:  ', checkED)
 
+    #Writing the correct statement to an output file(output.txt)
+    file_1 = open("output.txt","a+")#append mode 
+    file_1.write(checkED) 
+    file_1.close() 
 
 if __name__ == '__main__':
     main()
