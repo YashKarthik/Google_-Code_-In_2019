@@ -32,7 +32,7 @@ def main():
                 lisL.remove(string_1)
                 lisL.insert(m, string_2)
             else:
-                pass
+                print("Not in dictionary")
             i += 1
 
     
