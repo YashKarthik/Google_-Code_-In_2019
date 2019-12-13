@@ -1,52 +1,36 @@
-import os
+import nltk
+import re
+import textdistance
+
+
 def main():
-    while True:
-        dpath = input("Please enter the name of your dictionary: ")
-        fpath = input("Please enter the name of the file to check: ")
-        d = os.path.isfile(dpath)
-        f = os.path.isfile(fpath)
+    
 
-        if d == True and f == True:
-            misspelled_words = check_words(dpath, fpath)
-            break
+    with open("dict.txt", "r") as f:
+        english = {word.strip() for word in f}
+        dicL = [line.rstrip('\n') for line in open('dict.txt')]
+    with open("checkthem.txt", "r") as f:
+        wrong = (x.strip() for x in f if x.strip() not in english)
+        for key, word in enumerate(wrong):
+            convr = ("{}: {}\n".format(key, word))
+            print(convr)
+            lisL = (convr.split()) 
+    print("List of the words in file provided: ", lisL)
+    print("The list of words in the dictionary:", dicL)
 
-    print("\nThe following words were misspelled:\n----------")
-    #print(misspelled_words) #comment out this line if you are using the code below
+    i = 0
+    while i<20:
 
-    #optional, if you want a better looking output
+        if (textdistance.levenshtein(string_1, string_2)) < 3 :
+            lisL.insert(string_2)
+            lisL.pop(string_1)
+            i += 1
 
-    for word in misspelled_words:   # erase these lines if you don't want to use them
-        print(word)                 # erase these lines if you don't want to use them
+    str1 = " " 
+    
+    # return string   
+    print(str1.join(lisL)) 
 
-    #------------------------ 
-
-
-def linecheck(word, dlist):
-    if word in dlist:
-        return None
-    else:
-        return word
-
-def check_words(dictionary, file_to_check):
-    d = dictionary
-    f = file_to_check
-    dlist = {}  
-    wrong = []  
-
-
-    with open(d, 'r') as c:
-        for line in c:
-            (key) = line.strip()
-            dlist[key] = ''
-
-    with open(f, 'r') as i:
-        for line in i:
-            line = line.strip()
-            fun = linecheck(line, dlist)
-            if fun is not None:
-                wrong.append(fun)
-
-    return wrong
 
 if __name__ == '__main__':
     main()
