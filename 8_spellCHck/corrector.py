@@ -33,35 +33,35 @@ class SpellCheakr:
                 print("List of the words in file provided: ", lisL)
                 print("The list of words in the dictionary:", dicL)
 
-    def logic(self):
-        m = 0                       #For string_1
-        i = 0                    #For string_2
-        l = len(lisL)
+        def logic(self):
+            m = 0                       #For string_1
+            i = 0                    #For string_2
+            l = len(lisL)
 
-        while m != l:
-            i = 0
-            while i!= 20:
-                string_1 = itemgetter(m)(lisL)
-                string_2 = itemgetter(i)(dicL)
-                if (textdistance.levenshtein(string_1, string_2)) < 3 :
-                    lisL.remove(string_1)
-                    lisL.insert(m, string_2)
-                    print("----------------------->")
-                else:
-                    print("Checking......")
-                i += 1
+            while m != l:
+                i = 0
+                while i!= 20:
+                    string_1 = itemgetter(m)(lisL)
+                    string_2 = itemgetter(i)(dicL)
+                    if (textdistance.levenshtein(string_1, string_2)) < 3 :
+                        lisL.remove(string_1)
+                        lisL.insert(m, string_2)
+                        print("----------------------->")
+                    else:
+                        print("Checking......")
+                    i += 1
 
     
-    def print_2_File(self):
+        def print_2_File(self):
                                                 # return string  
-        str1 = '' 
-        checkED = (str1.join(lisL)) 
-        print('The corrected string is:  ', checkED)
+            str1 = '' 
+            checkED = (str1.join(lisL)) 
+            print('The corrected string is:  ', checkED)
 
-        #Writing the correct statement to an output file(output.txt)
-        file_1 = open("output.txt","a+")#append mode 
-        file_1.write(checkED) 
-        file_1.close() 
+            #Writing the correct statement to an output file(output.txt)
+            file_1 = open("output.txt","a+")#append mode 
+            file_1.write(checkED) 
+            file_1.close() 
 
     main(self=None)
     
