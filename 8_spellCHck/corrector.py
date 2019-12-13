@@ -22,16 +22,16 @@ class SpellCheakr:
 
     def main(self):
         with open("dict.txt", "r") as f:
-            english = {word.strip() for word in f}
+            english = {wrong.strip() for wrong in f}
             dicL = [line.rstrip('\n') for line in open('dict.txt')]
         with open("checkthem.txt", "r") as f:
             wrong = (x.strip() for x in f if x.strip() not in english)
-            for key, word in enumerate(wrong):
-                convr = ("{}: {}\n".format(key, word))
+            for key, wrong in enumerate(wrong):
+                convr = ("{}: {}\n".format(key, wrong))
                 print(convr)
                 lisL = (convr.split()) 
-                print("List of the words in file provided: ", lisL)
-                print("The list of words in the dictionary:", dicL)
+                print("List of the wrongs in file provided: ", lisL)
+                print("The list of wrongs in the dictionary:", dicL)
 
         def logic(self):
             m = 0                       #For string_1
