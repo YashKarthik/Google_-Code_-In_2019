@@ -25,6 +25,7 @@ def main():
     l = len(lisL)
 
     while m != l:
+        i = 0
         while i!= 20:
             string_1 = itemgetter(m)(lisL)
             string_2 = itemgetter(i)(dicL)
