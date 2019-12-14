@@ -1,11 +1,23 @@
-file_to_crack = input("Which file to crack?   1)1stcrackme, 2)2ndcrackme, 3)3rdcrackme, enter file name:  ")
-   
-with open(file_to_crack, "rb") as file:
-    data = file.read(8)
+import sys
+from elftools.elf.elffile import ELFFile
+from elftools.elf.relocation import RelocationSection
+from elftools.elf.descriptions import describe_reloc_type
 
-with open("out_passW.txt", "a+") as f:
-    f.write('Password extracted from ' + file_to_crack + ' is: ')
-    f.write(''.join(map(str, data)))
-    f.write("\n")
-    print("---------------Check your output file for the password ---------------")
-
+def process_file(filename):
+    print('Processing file:', filename)
+    with open(filename, 'rb') as f:
+        elffile = ELFFile(f)
+        for section in elffile.iter_sections():
+            if not isinstance(section, RelocationSection):
+                continue
+            symtable = elffile.get_section(section['sh_link'])
+            print('  %s section with %s relocations' % (
+                section.name, section.num_relocations()))
+            for reloc in section.iter_relocations():
+                symbol = symtable.get_symbol(reloc['r_info_sym'])
+                print('    Relocation (%s)' % 'RELA' if reloc.is_RELA() else 'REL')
+                # Relocation entry attributes are available through item lookup
+                print('      offset = %s' % hex(reloc['r_offset']))
+                print(symbol.name, 'type:', describe_reloc_type(reloc['r_info_type'], elffile), 'load at: ', hex(reloc['r_offset']))
+if __name__ == '__main__':
+    process_file(sys.argv[1])
