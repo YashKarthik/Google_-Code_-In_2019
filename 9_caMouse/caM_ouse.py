@@ -2,8 +2,8 @@ import cv2
 import numpy as np
 from pynput.mouse import Button, Controller
 import wx
-mouse=Controller()
 
+mouse=Controller()
 app=wx.App(False)
 (sx,sy)=wx.GetDisplaySize()
 (camx,camy)=(320,240)
