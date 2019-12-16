@@ -1,5 +1,6 @@
 import socket
 import requests
+import sys
 
 class PortScanner:
     def __init__(self, hostname, IPAddr, ip, choice, result, port, sock, IP):
@@ -20,7 +21,8 @@ class PortScanner:
     print("Your Computer IP Address is: ", IPAddr)    
     print("Your external IP address is: ", ip)
 
-    choice = input("Which do you wanna scan? (enter '1' for your computer's, enter '2' for your external IP addresss, enter '3' for scanning specific ip)  ")
+    print("Which IP doe you wanna scan?")
+    choice = input("Enter '1' for your computer's, enter '2' for your external IP addresss, enter '3' for scanning specific ip. press anythong else to exit:   ")
 
     if choice == 1:
         IP = IPAddr
@@ -28,6 +30,9 @@ class PortScanner:
         IP = ip
     elif choice == 3:
         IP = input("Enter IP address:  ")
+    else:
+        sys.exit(0)
+
     
     for port in range(0, 65535):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
