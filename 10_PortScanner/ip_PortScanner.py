@@ -18,19 +18,24 @@ class PortScanner:
     IPAddr = socket.gethostbyname(hostname)    
     ip = requests.get('https://checkip.amazonaws.com').text.strip()
     print("Your Computer's Name is: " + hostname)    
-    print("Your Computer IP Address is: ", IPAddr)    
+    print("Your Computer's IP Address is: ", IPAddr)    
     print("Your external IP address is: ", ip)
 
     print("Which IP doe you wanna scan?")
-    choice = input("Enter '1' for your computer's, enter '2' for your external IP addresss, enter '3' for scanning specific ip. press anythong else to exit:   ")
+    choice = int(input("Enter '1' for your computer's, enter '2' for your external IP addresss, enter '3' for scanning specific ip. press any other digit to exit:   "))
 
     if choice == 1:
         IP = IPAddr
+        print("Scanning computer's available ports")
     elif choice == 2:
         IP = ip
+        print("Scanning your external IP for ports ")
     elif choice == 3:
         IP = input("Enter IP address:  ")
+        print("Scanning specified IP for ports   ")
     else:
+        print("                      ")
+        print('                                 ---------------      EXIT     ----------------')
         sys.exit(0)
 
     
