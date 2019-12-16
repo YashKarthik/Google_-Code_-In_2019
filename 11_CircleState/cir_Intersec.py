@@ -24,7 +24,7 @@ C1C2 = math.sqrt((x_1 - x_2)^2 + (y_1 - y_2)^2)
 if C1C2 == r_1 + r_2:
     print("Circle A and circle B are tangents to each other.")
 elif C1C2 == 0:
-    print("Circles A, B are co-centric.")
+    print("Circles A, B are concentric.")
 elif C1C2 < r_1 + r_2:
     print("Circles A, B intersect each other")
 elif C1C2 > r_1 + r_2:
