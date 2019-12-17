@@ -3,19 +3,19 @@
         "terminal.background": "#141414",
         "terminal.foreground": "#4684cf",
         "tab.unfocusedActiveBorder": "#fff0",
+        "bracket-pair-colorizer-2.colors": [
+            "Gold",
+            "Orchid",
+            "LightSkyBlue",
+            "Green"
+        ],
         "activityBar.activeBorder": "#ee90bb",
         "activityBar.inactiveForeground": "#e7e7e799",
         "activityBarBadge.background": "#ee90bb",
         "activityBarBadge.foreground": "#15202b",
         "titleBar.inactiveBackground": "#1857a499",
         "titleBar.inactiveForeground": "#e7e7e799",
-        "statusBarItem.hoverBackground": "#1f6fd0",
-        "bracket-pair-colorizer-2.colors": [
-            "Gold",
-            "Orchid",
-            "LightSkyBlue",
-            "Green"
-        ]
+        "statusBarItem.hoverBackground": "#1f6fd0"
     },
     "peacock.color": "#1857a4"
 }

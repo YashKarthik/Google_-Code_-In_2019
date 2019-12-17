@@ -1,38 +1,49 @@
 import shodan
 import sys
 import socket
+import os
+import urllib3
+import json
 
 api = shodan.Shodan('B37FoQIeHcfOarldXp7H7a2vzqZg5BrF')
 
 #Search the target by their IP address
 def HostIP():
-    host_inp = input("Enter target's IP addrtess: ")
-    host = api.host(host_inp)
+    IP = input("Enter target's IP address: ")
+    hostinfo = api.host(IP)
 
     print("""
 IP: {}
 Organisation: {}
-Operating System: : {}
-    """.format(host['ip_str'], host.get('org', 'n/a'), host.get('os', 'n/a')))
+Operating System: : {}""".format(hostinfo['ip_str'], hostinfo.get('org', 'n/a'), hostinfo.get('os', 'n/a')))
+    print("Country: {}".format(hostinfo['country_name']))
 
-    for item in host ['data']: 
+
+    for item in hostinfo ['data']: 
         print(""" 
-Port: {}
-Banner: {}
--
-              """.format(item['port'], item['data']))
+Hostname: {}
+Open ports: {}""".format(item['hostnames'], item['port']))     
+
 
 #Search the target by their hostname
 def ShodanScan():   
     try:
         target = input("Enter the target's hostname: ")
         results = api.search(target)
-
         print("Results found: {}".format(results['total']))
+
         for results in results['matches']:
             print('IP: {}'.format(results['ip_str']))
-            print(results['data'])
+            hostinfo = api.host(results['ip_str'])
+            print("Country: {}".format(hostinfo['country_name']))
+
+            for results in hostinfo['data']:
+                print("""
+Hostname: {} 
+Open ports: {}""".format(results['hostnames'], results['port']))
             print('----------------------')
+
+
     except shodan.APIError as e:
         print('Error: {}'.format(e))
 
@@ -46,7 +57,6 @@ def MyIP():
         print("Unable to get Hostname and IP") 
 
 choice = 1
-
 while choice != 0:
     choice = int(input("""_________________________________
 Enter 1 - To get your IP.
