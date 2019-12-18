@@ -5,7 +5,8 @@ import os
 import urllib3
 import json
 
-api = shodan.Shodan('your api here')
+API_KEY = input("Enter api key")
+api = shodan.Shodan(API_KEY)
 
 #Search the target by their IP address
 def HostIP():
