@@ -1,0 +1,36 @@
+ 
+ 
+       
+Shodan API Attacks 
+ 
+ 
+
+relatives
+.
+ 
+ 
+Part 1:
+ 
+Simple enough I found my devices IP address.
+ 
+ 
+ 
+ 
+I ran the script in my integrated terminal through VSCode.
+ 
+ 
+Part 2:
+ 
+
+address as user input.
+ 
+ 
+ 
+Continued running the script through VSCode.
+ 
+ 
+____________________________________________________
+                                                    
+Authour: Yash Karthik                                         
+Application Used: Microsoft Word                                
+____________________________________________________ 
