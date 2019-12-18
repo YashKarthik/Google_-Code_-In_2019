@@ -2,10 +2,10 @@ import fitz
 import PyPDF2 as p2
 import datetime
 
-PDF_file = open('attck.pdf', 'rb')
+PDF_file = open('EXAMPLE.pdf', 'rb')
 pdfread = p2.PdfFileReader(PDF_file)
 
-file = fitz.open('attck.pdf')
+file = fitz.open('EXAMPLE.pdf')
 page = len(file)
 print("""
 
