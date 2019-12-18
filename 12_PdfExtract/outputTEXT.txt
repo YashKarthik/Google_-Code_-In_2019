@@ -1,32 +1,23 @@
  
  
-       
-Shodan API Attacks 
+ 
+Just a PDF file to replicate
  
  
-
-relatives
-.
+Text textetetdcbjkdnnjjndjncjdncncknp[cmwkon n dnciniod[ncid cdnciodmckodncd c 
+jdncidmkcmdcnoc jncpndmckoemncdocndncidcndnckd
  
+Dmkcndknc
  
-Part 1:
+Dkocnkncknkd
  
-Simple enough I found my devices IP address.
+Cmkdncdncncdncd
  
- 
- 
- 
-I ran the script in my integrated terminal through VSCode.
- 
- 
-Part 2:
- 
-
-address as user input.
+Dnokcndcndnucnuicndncoidncidciwonci cncincoicjniejciecjiwjcijcwc 
+cndjciojdciojdcijcijcidjcodc codnidjjdciodjc
  
  
  
-Continued running the script through VSCode.
  
  
 ____________________________________________________
