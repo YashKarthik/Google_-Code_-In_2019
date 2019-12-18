@@ -7,7 +7,9 @@ pdfread = p2.PdfFileReader(PDF_file)
 
 file = fitz.open('attck.pdf')
 page = len(file)
-print("Number of pages: ", page)
+print("""
+
+Number of pages: """, page)
 
 def img_extract():
     for i in range(page):
@@ -32,6 +34,7 @@ ____________________________________________________
 Authour: {}                                         
 Application Used: {}                                
 ____________________________________________________ """.format(info['/Author'], info["/Creator"]))
+    print(info_format)
     last_ver = result + info_format
     f = open("outputTEXT.txt", "w+")
     f.write(last_ver)
