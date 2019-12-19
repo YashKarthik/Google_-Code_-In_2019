@@ -1,0 +1,7 @@
+{
+    "workbench.colorCustomizations": {
+        "terminal.background": "#141414",
+        "terminal.foreground": "#a84663",
+        "tab.unfocusedActiveBorder": "#fff0"
+    }
+}
