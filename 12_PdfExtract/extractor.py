@@ -2,10 +2,11 @@ import fitz
 import PyPDF2 as p2
 import datetime
 
-PDF_file = open('EXAMPLE.pdf', 'rb')
+pdf__file = input("Enter PDF file to scan: ")
+PDF_file = open(pdf__file, 'rb')
 pdfread = p2.PdfFileReader(PDF_file)
 
-file = fitz.open('EXAMPLE.pdf')
+file = fitz.open(pdf__file)
 page = len(file)
 print("""
 
