@@ -19,7 +19,7 @@ r_2 = int(input("Enter the length of the radius of circle B:  "))
 #dist between the centres = sqrt((x1 - x2)^2 + (y1 - y2)^2)
 
 C1C2 = math.sqrt(abs(x_1 - x_2)^2 + abs(y_1 - y_2)^2)
-interSect = abs(r_1 - r_2) <= C1C2
+interSect = abs(r_1 - r_2) <= C1C2 <= abs(r_1 + r_2)
 
 if interSect == 'True':
     if C1C2 == r_1 + r_2:
