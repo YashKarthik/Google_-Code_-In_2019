@@ -1,7 +1,6 @@
-import turtle
 import math
+import matplotlib.pyplot as plt
 
-t = turtle.Turtle()
 print("""The following values need to be entered:
                            1) C1 = x, y coordinates of the first circle(centre)  
                            2) C2 = x, y coordinates of the second circle(centre)
@@ -30,16 +29,10 @@ elif C1C2 < r_1 + r_2:
 elif C1C2 > r_1 + r_2:
     print("The circles don't intersect.")
 
-t.circle(r_1)
-t.left(90)
-t.penup()
-t.forward(r_1)
-t.right(90)
-t.forward(C1C2)
-t.pendown()
-if C1C2 == 0:
-    exit()
-else:
-    pass
-t.circle(r_2)
-turtle.exitonclick()
+plt.axes()
+circle1 = plt.Circle((x_1, y_1), r_1, fc='none', ec='#4684cf')
+circle2 = plt.Circle((x_2, y_2,), r_2, fc='none', ec='#ee90bb')
+plt.gca().add_patch(circle1)
+plt.gca().add_patch(circle2)
+plt.axis('scaled')
+plt.show()
