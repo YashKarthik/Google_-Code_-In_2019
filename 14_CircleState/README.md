@@ -9,8 +9,10 @@ Checks if the circles are concentric, are tangents to each other or intersect ea
                         2)Length of the radii of circles A, B.
                         
 ### Algorithm / Thinking process:    
-##### 1)First calculate the distance between the centres of the circles:
-                      1)C1C2 = math.sqrt((x_1 - x_2)^2 + (y_1 - y_)^2)
+##### 1)Two circles would intersect or be tangents to each other only if
+                     The distance between their centers is between the sum and the difference of their radii.
+                     ###### i.e. interSect = abs(r_1 - r_2) <= math.sqrt((x_1 - x_2)^2 + (y_1 - y_2)^2)
+
 ##### 2)Now there are three cases:
                                 if C1C2 == r_1 + r_2:
                                     print("Circle A and circle B are tangents to each other.")
