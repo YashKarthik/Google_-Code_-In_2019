@@ -17,6 +17,20 @@
         "titleBar.inactiveForeground": "#e7e7e799",
         "statusBarItem.hoverBackground": "#1f6fd0"
     },
-    "peacock.color": "#1857a4",
+    "colorTabs.config": [
+        {
+            "regex": ".*\/mobile\/.*",
+            "color": "#FF0000",
+            "label": "MOBILE"
+        },
+        {
+            "regex": ".*\/web\/.*",
+            "color": "#00FF00",
+        },{
+            "regex": ".*\/desktop\/.*"
+        },
+    ],
+    "colorTabs.titleBackground": true,
+    "colorTabs.ignoreCase": true,
     "python.pythonPath": "/usr/local/bin/python3"
 }
