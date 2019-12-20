@@ -19,15 +19,18 @@ r_2 = int(input("Enter the length of the radius of circle B:  "))
 #dist between the centres = sqrt((x1 - x2)^2 + (y1 - y2)^2)
 
 C1C2 = math.sqrt((x_1 - x_2)^2 + (y_1 - y_2)^2)
+interSect = abs(r_1 - r_2) <= math.sqrt((x_1 - x_2)^2 + (y_1 - y_2)^2)
 
-if C1C2 == r_1 + r_2:
-    print("Circle A and circle B are tangents to each other.")
-elif C1C2 == 0:
-    print("Circles A, B are concentric.")
-elif C1C2 < r_1 + r_2:
-    print("Circles A, B intersect each other")
-elif C1C2 > r_1 + r_2:
-    print("The circles don't intersect.")
+if interSect == 'True':
+    if C1C2 == r_1 + r_2:
+        print("Circle A and circle B are tangents to each other.")
+    elif C1C2 != r_1 + r_2:
+        print("Circles A, B intersect each other")
+else:
+    if C1C2 == 0:
+        print("Circles A, B are concentric.")
+    else:
+        print("The circles don't intersect.")
 
 plt.axes()
 circle1 = plt.Circle((x_1, y_1), r_1, fc='none', ec='#4684cf')
