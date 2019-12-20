@@ -1,4 +1,3 @@
-
 from PIL import Image 
   
 # Convert encoding data into 8-bit binary 
@@ -83,6 +82,7 @@ def encode():
       
     new_img_name = input("Enter the name of new image(with extension): ") 
     newimg.save(new_img_name, str(new_img_name.split(".")[1].upper())) 
+    print("_________________Check your output file_________________")
   
 # Decode the data in the image 
 def decode(): 
