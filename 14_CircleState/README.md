@@ -13,12 +13,13 @@ Checks if the circles are concentric, are tangents to each other or intersect ea
                      The distance between their centers is between the sum and the difference of their radii.
                      i.e. interSect = abs(r_1 - r_2) <= math.sqrt((x_1 - x_2)^2 + (y_1 - y_2)^2)
 
-##### 2)Now there are three cases:
+##### 2)Now there are four cases:
                             if interSect == 'True':
                                 if C1C2 == r_1 + r_2:
                                     print("Circle A and circle B are tangents to each other.")
                                 else:
                                     print("Circles A, B intersect each other")
+                                    
                             else:
                                 if C1C2 == 0:
                                     print("Circles A, B are concentric.")
