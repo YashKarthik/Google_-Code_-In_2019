@@ -38,5 +38,5 @@ Next->
         text = text.format(LINKS=link_items)
         
         out_file = input("Enter output file name with extension: ")
-        with open("out_file", 'w') as fobj:
+        with open(out_file, 'w') as fobj:
             fobj.write(text)
