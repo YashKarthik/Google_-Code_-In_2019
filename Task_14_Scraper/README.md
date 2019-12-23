@@ -1,7 +1,7 @@
 # Scraper
 
 ### What it does:
-##### Scrapes a website when given a start url and allowed domain names and writes the relevant content into a output.md file
+##### Scrapes the quotes present on 'https://www.goodreads.com/quotes/' and writes it into an output file.
 ### Usage Code:
 ##### Type the following code in your terminal after cd-ing to the directory which has your code.
                             scrapy crawl spider_extract

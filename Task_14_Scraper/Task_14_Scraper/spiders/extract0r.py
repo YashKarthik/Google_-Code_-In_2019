@@ -2,10 +2,8 @@ import scrapy
 
 class QuotesSpiderSpider(scrapy.Spider):
     name = 'spider_extract'
-    dom_allowed = input("Enter allowed domain names: ")
-    allowed_domains = [dom_allowed]
-    dom_start = input("Enter start url: ")
-    start_urls = [dom_start]
+    allowed_domains = ['www.goodreads.com']
+    start_urls = ['https://www.goodreads.com/quotes/']
 
     def parse(self, response):
         quotes_dict = []
