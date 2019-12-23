@@ -21,7 +21,7 @@ class QuotesSpiderSpider(scrapy.Spider):
 
     # write a html file
     def write_as_html(self, dict_items):
-        html_text = '''
+        text = '''
  Output:
  
 
@@ -35,7 +35,8 @@ class QuotesSpiderSpider(scrapy.Spider):
 Next->
 {x[0]} {x[1]}"""
         link_items += "____________________________END________________________________"
-        html_text = html_text.format(LINKS=link_items)
+        text = text.format(LINKS=link_items)
         
-        with open("output.md", 'w') as fobj:
-            fobj.write(html_text)
+        out_file = input("Enter output file name with extension: ")
+        with open("out_file", 'w') as fobj:
+            fobj.write(text)
