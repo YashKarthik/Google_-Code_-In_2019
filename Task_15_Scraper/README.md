@@ -8,6 +8,8 @@
 ##### My spider's name is spider_extract; tweak the code accordingly.
 
 
-#### Relevant File:
-extract0r.py: has the code for scanning any goven url.(location: Task_14_Scraper/Task_14_Scraper/spiders/extract0r.py)
-###### All the other files are scrapy initiators and config files
+### Relevant File:
+#### extract0r.py: 
+It has the code for scanning any goven url.(location: Task_14_Scraper/Task_14_Scraper/spiders/extract0r.py)
+
+###### * All the other files are scrapy initiators and config files
