@@ -9,7 +9,8 @@
 
 
 ### Relevant File:
-#### extract0r.py: 
-It has the code for scanning any goven url.(location: Task_14_Scraper/Task_14_Scraper/spiders/extract0r.py)
+#### extract0r.py:
+It has the code for scanning the url.
+#### Location: Task_14_Scraper/Task_14_Scraper/spiders/extract0r.py
 
 ###### * All the other files are scrapy initiators and config files
