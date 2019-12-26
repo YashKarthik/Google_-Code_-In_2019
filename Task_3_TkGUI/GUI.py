@@ -26,17 +26,19 @@ def openVsCode():
    
     
 root = Tk()
+root.configure(background='#808080')
 
+label_ = Label(text="Hey, I'm Jarvis, here to help you get around with you everyday tasks.😃", fg='black', font='Helvetica 18 bold', bg='#808080')
+label__= Label(text='Most Used:', fg='black', bg='#808080', font='Helvetica 18 bold')
+label_1 = Label(text="Check for updates on you Google Code In Dashboard.", fg='purple', bg='#808080')
+button_1 = Button(text='Dashboard', fg='black',command=openCodeIn, highlightbackground='#a9a9a9')
+label_2 = Label(text="Manage files with Finder/Github Desktop", fg='purple', bg='#808080')
+button_2 = Button(text='Finder', fg='black', command=openFinder, highlightbackground='#a9a9a9')
+button__2 = Button(text='GitH.Deskt', fg='black', command=openGitHubDesk, highlightbackground='#a9a9a9')
+label_3 = Label(text='Tackle code with VsCode', fg='purple', bg='#808080')
+button_3 = Button(text='VsCode', fg='black', command=openVsCode, highlightbackground='#a9a9a9')
 
-label_ = Label(text="Hey, I'm Jarvis, here to help you get around with you everyday tasks.😃", fg='black')
-label__= Label(text='Most Used:', fg='black')
-label_1 = Label(text="Check for updates on you Google Code In Dashboard.", fg='black')
-button_1 = Button(text='Dashboard', fg='orange',background='blue', activebackground='grey', command=openCodeIn)
-label_2 = Label(text="Manage files with Finder/Github Desktop", fg='black')
-button_2 = Button(text='Finder', fg='orange', background='blue', activebackground='grey', command=openFinder)
-button__2 = Button(text='GitH.Deskt', fg='orange', background='blue', activebackground='grey', command=openGitHubDesk)
-label_3 = Label(text='Tackle code with VsCode', fg='black')
-button_3 = Button(text='VsCode', fg='orange', bg='blue', activebackground='grey',command=openVsCode)
+button_1.configure(background='#808080')
 
 label_.grid(row=0)
 label__.grid(row=2, column=0, sticky=W)
