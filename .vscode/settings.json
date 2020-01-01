@@ -32,5 +32,5 @@
     ],
     "colorTabs.titleBackground": true,
     "colorTabs.ignoreCase": true,
-    "python.pythonPath": "/usr/local/bin/python3"
+    "python.pythonPath": "/opt/anaconda3/bin/python"
 }
