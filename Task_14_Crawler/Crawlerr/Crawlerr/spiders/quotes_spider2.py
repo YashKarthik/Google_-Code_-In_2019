@@ -9,6 +9,6 @@ class QuotesSpider(scrapy.Spider):
 
     def parse(self, response):
         page = response.url.split("/")[-2]
-        filename = 'quotes2-%s.html' % page
+        filename = 'Quotes2-%s.csv' % page
         with open(filename, 'wb') as f:
             f.write(response.body)
