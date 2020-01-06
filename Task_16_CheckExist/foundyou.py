@@ -3,11 +3,12 @@ import re
 from bs4 import BeautifulSoup
 
 class colors:
-    GREEN = '\033[92m'
-    STOP = '\033[0m'
-    RED='\033[31m'
+	MAGENTA = '\033[95m'
+	GREEN = '\033[92m'
+	STOP = '\033[0m'
+	RED='\033[31m'
     
-un = str(input("Enter the username > "))
+un = str(input(colors.MAGENTA+("Enter the username: ")))
 
 def insta():
 	uname = "https://instagram.com/"+str(un)
@@ -25,7 +26,7 @@ def fb():
 	if response.status_code == 404 : 
 	     print(colors.RED+(u'\u2716'+" Facebook account not found")+colors.STOP)
 	else:
-	     print(colors.GREEN+(u'\u2713' + "Facebook account found")+colors.STOP)
+	     print(colors.GREEN+(u'\u2713' + " Facebook account found")+colors.STOP)
 
 def git():
 	uname = "https://github.com/"+str(un)
@@ -34,7 +35,7 @@ def git():
 	if response.status_code == 404 : 
 	    print(colors.RED+(u'\u2716'+" GitHub account not found")+colors.STOP)
 	else:
-	    print(colors.GREEN+(u'\u2713' + "GitHub account found")+colors.STOP)
+	    print(colors.GREEN+(u'\u2713' + " GitHub account found")+colors.STOP)
 
 insta()
 fb()
