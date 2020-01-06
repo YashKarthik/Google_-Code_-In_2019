@@ -32,5 +32,13 @@
     ],
     "colorTabs.titleBackground": true,
     "colorTabs.ignoreCase": true,
-    "python.pythonPath": "/opt/anaconda3/bin/python"
+    "python.pythonPath": "/opt/anaconda3/bin/python",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true
+    },
+    "explorerExclude.backup": null
 }
