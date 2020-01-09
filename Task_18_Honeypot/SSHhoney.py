@@ -1,6 +1,7 @@
 import socket
 import sys
 from termcolor import colored, cprint
+
 our_log=open("Attackers_Data.txt","w") #Our text file to save attackers data in it
 
 def ssh(msg="",listeners=2):
