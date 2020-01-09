@@ -5,8 +5,6 @@ from termcolor import colored, cprint
 our_log=open("Attackers_Data.txt","w") #Our text file to save attackers data in it
 
 def ssh(msg="",listeners=2):
-    MAGENTA = '\033[95m'
-    STOP = '\033[0m'
     welcome="""Welcome to
     ___________________     ___________________     
     |                       |                           |                       |
