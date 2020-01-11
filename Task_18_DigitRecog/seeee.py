@@ -6,8 +6,8 @@ from time import time
 import os
 from torch import nn
 from torch import optim
-
 from torchvision import datasets, transforms
+import threading
 
 # Define a transform to normalize the data
 transform = transforms.Compose([transforms.ToTensor(),
@@ -27,8 +27,9 @@ print(images.shape)
 print(labels.shape)
 
 plt.imshow(images[0].numpy().squeeze(), cmap='gray_r');
-
 figure = plt.figure()
+plt.show()
+
 num_of_images = 60
 for index in range(1, num_of_images + 1):
     plt.subplot(6, 10, index)
@@ -155,6 +156,6 @@ for images,labels in valloader:
     all_count += 1
 
 print("Number Of Images Tested =", all_count)
-print("\nModel Accuracy =", (correct_count/all_count))
+print("Model Accuracy =", (correct_count/all_count))
 torch.save(model, './my_mnist_model.pt') 
 print('Saved')
