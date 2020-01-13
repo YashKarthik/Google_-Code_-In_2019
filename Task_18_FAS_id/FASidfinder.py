@@ -34,9 +34,9 @@ def main():
     username = input('Enter The username you wanna search: ')
     email = get_email(username)
     if email:
-        print(f'User: {username} Email -> {email}')
+        cprint(f'User: {username} Email -> {email}', 'green')
     else:
-        print('The given user doesn\'t exist')
+        cprint('The given user doesn\'t exist', 'red')
 
 
 if __name__ == "__main__":
