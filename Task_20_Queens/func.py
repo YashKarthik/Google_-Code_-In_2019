@@ -20,12 +20,7 @@ def clrscr():
 
 
 def take_input(List, *args):
-    """
-    A function to let the user choose some thing from a list, and give a list of functions to for that specific command.
-    Each Element of args, is a list, containing the function, and it's arguments.
-    Example take_input(['exit'], exit)
-    TODO: Maybe add an option to pass kwargs, I don't really need it, so Idk.
-    """
+    
     assert len(args) == len(List)
     breakline()
     for i, elem in enumerate(List):
