@@ -32,7 +32,7 @@
     ],
     "colorTabs.titleBackground": true,
     "colorTabs.ignoreCase": true,
-    "python.pythonPath": "/Library/Frameworks/Python.framework/Versions/3.8/bin/python3",
+    "python.pythonPath": "/opt/anaconda3/bin/python",
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
