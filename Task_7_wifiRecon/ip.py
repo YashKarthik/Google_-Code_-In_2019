@@ -2,7 +2,7 @@ import nmap
 
 class Network(object):
     def __init__(self):
-        ip = input("enter ip")
+        ip = input("enter ip: ")
         self.ip = ip
 
     def networkscanner(self):

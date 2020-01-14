@@ -1,151 +1,154 @@
 try:
-    import os
-    import socket
-    import multiprocessing
-    import subprocess
-    import os
-    from subprocess import Popen, PIPE
-    import re
-    import requests
-    import nmap
-    import threading
-    print("Library and Modules Loaded .......")
-except:
-    print("""No Library Found
-     Please Make sure you have Following Library installed
-      
-    import os
-    import socket
-    import multiprocessing
-    import subprocess
-    import os
-    from subprocess import Popen, PIPE
-    import re
-    
-     """)
 
-class Sniffer(object):
+    import nmap  # import nmap.py module
+    import xlwt
+    import requests
+    from getmac import get_mac_address
+    import sqlite3
+    import geocoder
+    import datetime
+    import time
+    import datetime
+    import pandas as pd
+    print("All Modules loaded .. ")
+
+except Exception as e:
+
+    print("Some Modules are missing {}".format(e))
+
+
+class Location(object):
 
     def __init__(self):
         pass
 
-def __get_ip(self):
-        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.connect(("8.8.8.8", 80))
-        ip = s.getsockname()[0]
-        s.close()
-        return ip
+    def get_locations(self):
+
+        """
+        :return: Lat and Long
+        """
+        try:
+            g = geocoder.ip('me')
+            my_string=g.latlng
+            longitude=my_string[0]
+            latitude=my_string[1]
+
+            return longitude,latitude
+        except:
+            print('Error make sure you have Geo-Coder Installed ')
 
 
-def __pinger(self, job_q, results_q):
+class DateandTime(object):
 
-        DEVNULL = open(os.devnull, 'w')
-        while True:
-            ip = job_q.get()
-            if ip is None:
-                break
-            try:
-                subprocess.check_call(['ping', '-c1', ip],
-                                      stdout=DEVNULL)
-                results_q.put(ip)
-            except:
-                pass
+    def __init__(self):
+        pass
 
-def get_Mac_Address(self,IP = '192.168.1.1'):
-        pid = Popen(["arp", "-n", IP], stdout=PIPE)
-        s = pid.communicate()[0]
-        s = s.decode('utf-8')
-        mac = re.search(r"(([a-f\d]{1,2}\:){5}[a-f\d]{1,2})", s).groups()[0]
+    @ staticmethod
+    def get_time_date():
+        try:
+            """
+            :return:  date and time
+            """
+            my = datetime.datetime.now()
+            data_time = '{}:{}:{}'.format(my.hour,my.minute,my.second)
+            data_date = '{}/{}/{}'.format(my.day,my.month,my.year)
+            return data_date,data_time
+        except:
+            print('could now get date and time ')
 
-        vendor_mac = mac.split(":")
-        mac_vendor = ''.join(vendor_mac)[0:6]
-        url = "https://macvendors.com/query/{}".format(mac_vendor)
-        r = requests.get(url)
-        vendor_mac_v = r.text
+    def convert_timestamp(self,timestamp):
+        timestamp = 1554506464
+        dt_object = datetime.fromtimestamp(timestamp)
+        return dt_object
 
-        if len(vendor_mac_v) > 20:
-            mac_vendor_name = "Not Found"
+
+class Mac(object):
+
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def get_Mac_Address(IP='192.168.1.1'):
+        mac = get_mac_address(ip=IP)  # using 'get_mac_address' from 'getmac' import
+        return mac
+
+    @staticmethod
+    def vendor(mac=''):
+
+        if len(str(mac)) <= 2:
+            return "Not Found"
         else:
-            mac_vendor_name = r.text
+            try:
+                vendor_mac = mac.split(":")
+                mac_vendor = ''.join(vendor_mac)[0:6]
+                url = "https://macvendors.com/query/{}".format(mac_vendor)
+                r = requests.get(url)
+                vendor_mac_v = r.text
+            except:
+                return "Not Found"
+
+            if len(vendor_mac_v) > 20:
+                mac_vendor_name = "Not Found"
+            else:
+                mac_vendor_name = r.text
         return mac, mac_vendor_name
 
 
-def get_host(self, pool_size=255):
-        ip_list = list()
+class Scanner(object):
 
-        # get my IP and compose a base like 192.168.1.xxx
-        ip_parts = self.__get_ip()
-        ip_parts = ip_parts.split(".")
+    def __init__(self, network):
+        self.network = network
+        self.macobj  = Mac()
+        self.geo = Location()
+        self.dt = DateandTime()
 
-        ip_parts = self.__get_ip().split('.')
-        base_ip = ip_parts[0] + '.' + ip_parts[1] + '.' + ip_parts[2] + '.'
+    @property
 
-        # prepare the jobs queue
-        jobs = multiprocessing.Queue()
-        results = multiprocessing.Queue()
+    def scan(self):
 
-        pool = [multiprocessing.Process(target=self.__pinger, args=(jobs, results)) for i in range(pool_size)]
-
-        for p in pool:
-            p.start()
-
-        # cue hte ping processes
-        for i in range(1, 255):
-            jobs.put(base_ip + '{0}'.format(i))
-
-        for p in pool:
-            jobs.put(None)
-
-        for p in pool:
-            p.join()
-
-        # collect he results
-        while not results.empty():
-            ip = results.get()
-            ip_list.append(ip)
-
-        return ip_list
+        ipV  = []
+        macV = []
+        VendorV = []
+        longitudeV = []
+        latitudeV = []
+        dtV =[]
+        tmV =[]
 
 
-def ip_scan(self,ip_address = "192.168.1.1"):
-        try:
-            scanner = nmap.PortScanner()
-            scanner.scan(hosts=ip_address)
-            ip_status = scanner[ip_address].state()
+        if len(self.network) == 0:
+            self.network = '192.168.1.1/24'
+        else:
+            longitude,latitude = self.geo.get_locations()
+            ddate, ttime = self.dt.get_time_date()
+            network = self.network + '/24'
 
-            for host in scanner.all_hosts():
-                my_host = []
-                my_protocol = []
-                my_port =[]
+        print('Starting Scan ...... ')
 
-                my_host.append(host)
-                for proto in scanner[host].all_protocols():
-                    my_protocol.append(proto)
-                    lport = scanner[host][proto].keys()
-                    for port in lport:
-                        my_port.append(port)
+        nm = nmap.PortScanner()
+        nm.scan(hosts=network, arguments='-sn')  # define nmap arguments here
+        hosts_list = [(x, nm[x]['status']['state']) for x in nm.all_hosts()]
 
-            return my_port , my_protocol, ip_status
-        except:
-            pass
+        for host, status in hosts_list:
+            mac = self.macobj.get_Mac_Address(IP=host)
+            mac_vendor = self.macobj.vendor(mac=mac)[1]
+
+            ipV.append(host)
+            macV.append(mac)
+            VendorV.append(mac_vendor)
+            longitudeV.append(longitude)
+            latitudeV.append(latitude)
+            dtV.append(ddate)
+            tmV.append(ttime)
+
+        data = list(zip(ipV, macV, VendorV,longitudeV, latitudeV ,dtV ,tmV))
+        df = pd.DataFrame(data=data, columns=["Ip", "Mac","Vendor", "Longitude", "Latitude", "Date", "Time"])
+        print(df)
+
 
 
 if __name__ == "__main__":
-    counter = 1
+    network = '10.12.56.1'
 
-    s = Sniffer()
-    ip = s.get_host()
+    scan = Scanner(network=network)
 
-    for x in ip:
-        try:
-            counter = counter + 1
-
-            mac, mac_vendor_name = s.get_Mac_Address(IP=x)
-
-            my_port , my_protocol, ip_status = s.ip_scan(ip_address=x)
-
-            s.my_excel(x , my_port , my_protocol, ip_status,mac, mac_vendor_name,counter)
-
-            print(" Ip:\t{} \t MAC:\t{} \t\t vendor: \t {} \t\tStatus {} \t\t\t Port Open {} ".format(x,mac,mac_vendor_name,ip_status,my_port))
-        except:
-            pass
+    scan.scan
