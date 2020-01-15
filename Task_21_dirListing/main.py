@@ -1,24 +1,26 @@
 from linkEXT import LinkExtractor, Vuln
+from termcolor import colored, cprint
 
 def main():
-    url = input("Enter the url of the website including the protocol, example(https://example.com): ")
-    if is_vuln(url):
-        print("The website is vulnerable at", url)
+    cprint("Enter the complete url of the website: ", 'yellow')
+    url = input("url:  ")
+    if Vuln(url):
+        cprint("The website is vulnerable at", 'red', url)
     else:
         Links = LinkExtractor().GetAllLinks(url)
         Direcs = LinkExtractor().DirectoryExtractor(Links)
         print('-'*60)
-        print('All Links Extracted.')
+        cprint('All Links Extracted.', 'green')
         print('-'*60)
-        print("Checking vulnerablities.")
+        cprint("Checking vulnerablities.", 'yellow')
         safe = True 
         for direc in Direcs:
-            print(f"Checking if the site is vulnerable at {direc}")
-            if is_vuln(direc):
+            cprint(f"Checking if the site is vulnerable at {direc}", 'magenta')
+            if Vuln(direc):
                 safe = False
-                print(f"The website is vulnerable at: {direc}")
+                cprint(f"The website is vulnerable at: {direc}", 'red')
         if safe:
-            print("The website is secure (Atleast of directory listing vulns).")
+            cprint("The website is secure (Atleast of directory listing vulnerabilities).", 'green')
 
 if __name__ == "__main__":
     main()

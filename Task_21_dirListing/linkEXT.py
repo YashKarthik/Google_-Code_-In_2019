@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+from termcolor import colored, cprint
 import re 
 
 class LinkExtractor:
@@ -26,7 +27,7 @@ class LinkExtractor:
 
         return False 
     def extract_links(self, url):
-        print(f"Extracting links from {url}")
+        cprint(f"Extracting links from {url}", 'cyan')
         self.url = url 
         html_page = requests.get(url).content
         soup = BeautifulSoup(html_page, "lxml")
@@ -47,10 +48,7 @@ class LinkExtractor:
 
     #Utility function.
     def get_all_links(self, base_url: str, global_extracted_urls: list, crawled_urls: list):
-        '''
-        Recursive approach to find extract all the possible urls.
-        '''
-
+     
         #Base case
         curr_extracted_urls = self.extract_links(base_url)
         if len(curr_extracted_urls) == 0:
@@ -95,8 +93,7 @@ def Vuln(url):
     return False
 
 if __name__ == "__main__":
-    #url = "https://pythonspot.com/extract-links-from-webpage-beautifulsoup/"
-    url = "https://codingwithaj.blogspot.com/"
+    url = "https://virtuallybinary.blogspot.com/"
     link_extractor = LinkExtractor()
     Links = link_extractor.GetAllLinks(url)
     print(link_extractor.DirectoryExtractor(Links))
