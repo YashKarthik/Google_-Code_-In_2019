@@ -13,8 +13,8 @@ app = Flask(__name__)
 
 
 def apod_api(date):
-    with urllib.request.urlopen(API_URL.format(date)) as res:
-        return json.load(res)
+    with urllib.request.urlopen(API_URL.format(date)) as urll:
+        return json.load(urll)
 
 
 @app.errorhandler(404)
@@ -54,6 +54,9 @@ def apod_html(date):
 @app.route('/<date>/pdf')
 def apod_pdf(date):
     return Response(HTML(string=apod_html(date)).write_pdf(), mimetype="application/pdf")
+    
+    with open('DATA.pdf', 'a+') as f:
+        f.write(urll.content)
 
 
 if __name__ == "__main__":
