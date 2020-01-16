@@ -54,8 +54,10 @@ def apod_html(date):
 @app.route('/<date>/pdf')
 def apod_pdf(date):
     return Response(HTML(string=apod_html(date)).write_pdf(), mimetype="application/pdf")
-    
+    global urll
+    urllib.request.urlretrieve(url, "DATA.pdf")
     with open('DATA.pdf', 'a+') as f:
+        global urll
         f.write(urll.content)
 
 
