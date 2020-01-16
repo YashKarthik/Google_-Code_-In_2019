@@ -6,7 +6,7 @@ import datetime
 from weasyprint import HTML
 from flask import Flask, Response, render_template, abort
 
-API_KEY = os.environ.get('3yXki2XchO0PnSBZZjTlzWHbJzXhjHd8lMnVS8Q5', 'DEMO_KEY')
+API_KEY = os.environ.get('API KEY HERE', 'DEMO_KEY')
 API_URL = "https://api.nasa.gov/planetary/apod?date={}&api_key=" + API_KEY
 
 app = Flask(__name__)
