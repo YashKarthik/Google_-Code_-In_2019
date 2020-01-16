@@ -6,5 +6,5 @@ CD to the directory which has the file and then
                                               flask run
                                               
 Then navigate to http://127.0.0.1:5000/
-
+##### Enter your API KEY in line 9. To get API KEY: https://api.nasa.gov
 ###### You should go through requirements.txt to check if you have all the required modules.
