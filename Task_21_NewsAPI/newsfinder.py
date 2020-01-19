@@ -3,7 +3,7 @@ from flask import Flask, render_template, request
 from datetime import datetime
 
 app = Flask(__name__)
-YOUR_API_HERE = input("Enter your API key here: ")
+YOUR_API_HERE = ("Enter your API key here ")
 newsapi = NewsApiClient(api_key=YOUR_API_HERE)
 
 
